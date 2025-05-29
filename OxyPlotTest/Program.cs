@@ -102,9 +102,6 @@ double xMin = 0;
 double xMax = 1100;
 
 
-double yBottom = N + 0.2;
-double yTop = N + 0.4;
-
 double steps = 100;
 
 for (int i = 0; i < steps; i++)
@@ -113,9 +110,9 @@ for (int i = 0; i < steps; i++)
     double x2 = xMin + (i + 1) * (xMax - xMin) / steps;
 
     var color = OxyColor.FromRgb(
-        (byte)(255 * i / steps),       // R rośnie
+        (byte)(255 * i / steps),       
         0,
-        (byte)(255 * (1 - (double)i / steps)) // B maleje
+        (byte)(255 * (1 - (double)i / steps)) 
     );
 
     var rect = new RectangleAnnotation
@@ -127,8 +124,8 @@ for (int i = 0; i < steps; i++)
         Fill = color,
         StrokeThickness = 0,
         Layer = AnnotationLayer.AboveSeries,
-        ClipByXAxis = false,  // ważne, żeby nie przycinało poza osią X
-        ClipByYAxis = false   // ważne, żeby nie przycinało poza osią Y
+        ClipByXAxis = false,  
+        ClipByYAxis = false   
        
     };
 
@@ -141,7 +138,7 @@ for (int i = 0; i < steps; i++)
 var verticalLine = new LineAnnotation
 {
     Type = LineAnnotationType.Vertical,
-    X = 550, // wartość X, na której ma być pionowa linia
+    X = 550, 
     Color = OxyColors.Red,
     LineStyle = LineStyle.Solid,
     TextOrientation = AnnotationTextOrientation.Vertical,
@@ -156,13 +153,13 @@ for (int i =0; i< sampleData.PlotItems.Count ; i++)
     model.Annotations.Add(new LineAnnotation
     {
         Type = LineAnnotationType.Horizontal,
-        Y = i,  // kategoria jako pozycja Y
+        Y = i,  
         YAxisKey = "KategoriaOś",
         Color = OxyColors.LightGray,
         LineStyle = LineStyle.Dash,
         StrokeThickness = 1,
         TextOrientation = AnnotationTextOrientation.Horizontal,
-        Layer = AnnotationLayer.BelowAxes // ważne: linie pod krzywą
+        Layer = AnnotationLayer.BelowAxes 
 
     });
 }
