@@ -68,7 +68,7 @@ var serie = new LineSeries
 {
     Color = OxyColors.SteelBlue,
     // LabelPlacement = LabelPlacement.Inside,
-    LabelFormatString = "Wartość {0}",
+   // LabelFormatString = "Wartość {0}",
     YAxisKey = "KategoriaOś"
 };
 
@@ -81,6 +81,9 @@ for (int i = 0; i < sampleData.PlotItems.Count; i++)
 
 model.Axes.Add(categoryAxis);
 model.Series.Add(serie);
+
+
+
 
 
 var xAxis = new LinearAxis
@@ -162,6 +165,18 @@ for (int i =0; i< sampleData.PlotItems.Count ; i++)
         Layer = AnnotationLayer.BelowAxes 
 
     });
+
+    var annotation = new TextAnnotation
+    {
+        Text = $"My Label {sampleData.PlotItems[i].ValueDescription}",
+        TextPosition = new DataPoint(sampleData.PlotItems[i].Value, i),
+        Stroke = OxyColors.Transparent,
+        FontWeight = FontWeights.Bold,
+        FontSize = 12,
+        TextColor = OxyColors.Black
+    };
+
+    model.Annotations.Add(annotation);
 }
 
 
